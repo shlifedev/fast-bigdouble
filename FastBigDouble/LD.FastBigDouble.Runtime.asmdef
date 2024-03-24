@@ -1,0 +1,10 @@
+{
+    "name": "LD.FastBigDouble.Runtime",
+    "rootNamespace": "", 
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true, 
+    "autoReferenced": true,
+    "defineConstraints": [], 
+    "noEngineReferences": true
+}
