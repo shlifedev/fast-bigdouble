@@ -30,9 +30,7 @@ namespace LD
         static bool IsAlphabet(char input)
         {
             if (input>= 'A' && input <= 'Z')
-                return true;
-            if (input>= 'a' && input <= 'z')
-                return true;
+                return true; 
             return false;
         }
         public static (double numericPart, string alphaPart) SplitAlphabetValue(string input)
@@ -133,14 +131,14 @@ namespace LD
         }
         public BigDouble(string value)
         { 
-            if (HasAlphabet(value))
-            {
-                this = new BigDouble(value, eFormat.NumberWithAlphabet);
-            }
-            else if (value.IndexOf('e') != -1)
+            if (value.IndexOf('e') != -1)
             {
                 this = new BigDouble(value, eFormat.NumberWithExponent);
             }
+            else if (HasAlphabet(value))
+            {
+                this = new BigDouble(value, eFormat.NumberWithAlphabet);
+            } 
             else
             {
                 this = BigDouble.Parse(value);

@@ -1,19 +1,16 @@
-using System; 
+using System;
+using System.Collections.Generic;
 using System.Text;  
 
 // I'm not sure if there's a "Yes, this is Unity" define symbol
 // (#if UNITY doesn't seem to work). If you happen to know one - please create
-// an issue here https://github.com/Razenpok/FastBigDouble.cs/issues.
-#if UNITY_2017_1_OR_NEWER
-using UnityEngine;
-#endif
-
+// an issue here https://github.com/Razenpok/FastBigDouble.cs/issues. 
 namespace LD
 { 
     public partial struct BigDouble : IFormattable, IComparable, IComparable<BigDouble>, IEquatable<BigDouble>
     {
-        private static StringBuilder unitSb = new StringBuilder(); 
-        private static StringBuilder alphaUnitSb = new StringBuilder(); 
+        private static Dictionary<long, string> alphabetCache = new Dictionary<long, string>();
+        private static StringBuilder unitSb = new StringBuilder();  
         /// <summary>
         /// 몇 단위로 자를건지
         /// </summary>
@@ -40,23 +37,29 @@ namespace LD
     
         public static string GetAlphabetUnit(long exponent)
         {
-            alphaUnitSb.Clear();
-            if (exponent < 3)
+            if (alphabetCache.ContainsKey(exponent) == false)
             {
-                return null;
+                Span<char> unit = stackalloc char[8];
+                int index = unit.Length - 1;
+                if (exponent < 3)
+                {
+                    return null;
+                }
+
+                long adjustedExponent = (exponent - 3) / 3;
+                do
+                {
+                    long remainder = adjustedExponent % 26;
+                    char letter = (char)('A' + remainder);
+                    unit[index--] = letter;
+                    adjustedExponent = (adjustedExponent / 26) - 1;
+                } while (adjustedExponent >= 0);
+
+                var str = new string(unit.Slice(index + 1, unit.Length - index - 1));
+                alphabetCache.Add(exponent, str);
             }
 
-            long adjustedExponent = (exponent - 3) / 3; 
-            do
-            {
-                long remainder = adjustedExponent % 26;
-                char letter = (char)('A' + remainder);
-                alphaUnitSb.Insert(0, letter);
-                adjustedExponent = (adjustedExponent / 26) - 1;
-            }
-            while (adjustedExponent >= 0);
-
-            return alphaUnitSb.ToString();
+            return alphabetCache[exponent];
         }
          
         /// <summary>

@@ -1,15 +1,9 @@
 using System;
 using System.Globalization;
-using Random = System.Random; 
-#if UNITY_2017_1_OR_NEWER
-using UnityEngine;
-#endif
+using Random = System.Random;  
 
 namespace LD
-{
-#if UNITY_2017_1_OR_NEWER
-    [Serializable]
-#endif
+{ 
     public partial struct BigDouble : IFormattable, IComparable, IComparable<BigDouble>, IEquatable<BigDouble>
     {
         public const double Tolerance = 1e-18;
@@ -24,17 +18,9 @@ namespace LD
 
         //The smallest exponent that can appear in a Double, though not all mantissas are valid here.
         private const long DoubleExpMin = -324;
-
-#if UNITY_2017_1_OR_NEWER
-        [SerializeField]
-        private double mantissa;
-        [SerializeField]
-        private long exponent;
-#else
-        private double mantissa;
-        private long exponent;
-#endif
-
+ 
+        private double mantissa; 
+        private long exponent;  
         // This constructor is used to prevent non-normalized values to be created via constructor.
         // ReSharper disable once UnusedParameter.Local
         private BigDouble(double mantissa, long exponent, PrivateConstructorArg _)
