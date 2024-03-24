@@ -1,6 +1,6 @@
 # Fast-BigDouble
 
-This source code is a fork of BreakInfinity that has been modified for idle games that use very large numbers.
+This source code is a fork of [BreakInfinity](https://github.com/Razenpok/BreakInfinity.cs) that has been modified for idle games that use very large numbers.
 
 ## Why Fast?
 While double.Parse and double.ToString are great for their versatility, they are very slow in special situations.
