@@ -3,11 +3,11 @@
 This source code is a fork of [BreakInfinity](https://github.com/Razenpok/BreakInfinity.cs) that has been modified for idle games that use very large numbers.
 
 ## Why Fast?
-While double.Parse and double.ToString are great for their versatility, they are very slow in special situations.
+While **double.Parse** and **double.ToString **are great for their versatility, they are very slow in special situations.
 
 In games that use large numbers, such as idle games, you don't need to care as much about the accuracy of floating-point numbers, so it's a performance advantage to create your own algorithm to parse double.
 
-And Unless it's a case like ToString, which requires a string to be created anew, it will behave as memory efficient code with near zero GC. 
+And Unless it's a case like ToString, which requires a string to be created anew, it will behave as **memory efficient** code with near **zero GC**
 
 ## How to Use?
 It is exactly the same as BigInfinity.cs, but it must follow these rules
