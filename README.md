@@ -7,6 +7,8 @@ While double.Parse and double.ToString are great for their versatility, they are
 
 In games that use large numbers, such as idle games, you don't need to care as much about the accuracy of floating-point numbers, so it's a performance advantage to create your own algorithm to parse double.
 
+And Unless it's a case like ToString, which requires a string to be created anew, it will behave as memory efficient code with near zero GC. 
+
 ## How to Use?
 It is exactly the same as BigInfinity.cs, but it must follow these rules
 
