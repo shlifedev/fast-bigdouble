@@ -21,7 +21,7 @@ public class Tests
         FastBigDouble p1 = new FastBigDouble("1e500000");
         FastBigDouble p2 = new FastBigDouble("1e"+(1000000-500000).ToString());
         Assert.IsTrue((p0 / p1) == p2);
-    }`
+    }
 
     [Test]
     public void PM()
