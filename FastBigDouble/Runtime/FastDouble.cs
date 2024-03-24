@@ -4,7 +4,7 @@ namespace LD
 { 
     public static class FastDouble
     {
-        public static FastBigValueInfo GetBigValueInfo(string input)
+        public static BigValueInfo GetBigValueInfo(string input)
         { 
             double mantissa = 0;
             long exponent = 0;
@@ -80,7 +80,7 @@ namespace LD
                 exponent = -exponent;
             }
 
-            return new FastBigValueInfo()
+            return new BigValueInfo()
             {
                 Exponent = exponent,
                 Mantissa = mantissa
