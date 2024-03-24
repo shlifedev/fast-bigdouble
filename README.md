@@ -1,8 +1,11 @@
 # Fast-BigDouble
-
+ 
 This source code is a fork of [BreakInfinity](https://github.com/Razenpok/BreakInfinity.cs) that has been modified for idle games that use very large numbers.
 
+
 ## Why Fast?
+<img width="820" alt="image" src="https://github.com/shlifedev/FastBigDouble/assets/49047211/3623a23a-961d-435a-a555-e6f618d227a3">
+
 While **double.Parse** and **double.ToString **are great for their versatility, they are very slow in special situations.
 
 In games that use large numbers, such as idle games, you don't need to care as much about the accuracy of floating-point numbers, so it's a performance advantage to create your own algorithm to parse double.
