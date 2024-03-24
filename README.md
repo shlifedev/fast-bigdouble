@@ -20,12 +20,12 @@ It is exactly the same as BigInfinity.cs, but it must follow these rules
 
 Simple.
 ```cs
-FastBigDouble _ = new BigDouble("1000");
-FastBigDouble _ = new BigDouble("1.0A");
-FastBigDouble _ = new BigDouble("999.9A");
-FastBigDouble _ = new BigDouble("1000A"); // It's Error. Alphabet Number Allow -999.9~999.9 for performance.
-FastBigDouble _ = new BigDouble("9.999e100"); // It's Very Fast!
-FastBigDouble _ = new BigDouble("100e100"); // It's Error. If you want exponent style mantissa allow -9.99999999d~9.99999999d
+FastBigDouble _ = new BigDouble("1000"); // Number Constructor
+FastBigDouble _ = new BigDouble("1.0A"); // Alphabet Constructor
+FastBigDouble _ = new BigDouble("999.9A"); // Alphabet Constructor
+FastBigDouble _ = new BigDouble("1000A"); // Alphabet Constructur, But It's Throw Error. Alphabet Number Allow -999.9~999.9 for performance.
+FastBigDouble _ = new BigDouble("9.999e100"); // Exponent Constructor. It's Very Fast!!!!
+FastBigDouble _ = new BigDouble("100e100"); // Exponent Constructor. But It's Throw Error. If you want exponent style mantissa allow -9.99999999d~9.99999999d
 
 
 new FastBigDouble(1e3).ToString() // Result = "1.0A"
