@@ -6,6 +6,7 @@ namespace PerformanceTest;
  
 [RPlotExporter]
 [GcServer]
+[Config(typeof(FastAndDirtyConfig))]
 public class FastBigDouble
 {
     [Benchmark]
@@ -13,7 +14,7 @@ public class FastBigDouble
     {
         for (int i = 0; i < 10000; i++)
         {
-            LD.FastBigDouble a = new LD.FastBigDouble("1e1000");
+            LD.BigDouble a = new LD.BigDouble("1e1000");
         }
     }
     [Benchmark]
@@ -21,7 +22,7 @@ public class FastBigDouble
     {
         for (int i = 0; i < 10000; i++)
         {
-            LD.FastBigDouble a = new LD.FastBigDouble("999.9ZZZ");
+            LD.BigDouble a = new LD.BigDouble("999.9ZZZ");
         }
     }
     [Benchmark]
@@ -29,7 +30,7 @@ public class FastBigDouble
     {
         for (int i = 0; i < 10000; i++)
         {
-            LD.FastBigDouble a = new LD.FastBigDouble("10000000000000000000000000000000000000000000000000000000000");
+            LD.BigDouble a = new LD.BigDouble("10000000000000000000000000000000000000000000000000000000000");
         }
     }
 }

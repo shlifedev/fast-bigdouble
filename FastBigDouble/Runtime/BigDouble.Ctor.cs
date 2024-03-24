@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic; 
 namespace LD
 { 
-    public partial struct FastBigDouble : IFormattable, IComparable, IComparable<FastBigDouble>, IEquatable<FastBigDouble>
+    public partial struct BigDouble : IFormattable, IComparable, IComparable<BigDouble>, IEquatable<BigDouble>
     {
     
         /// <summary>
@@ -105,12 +105,12 @@ namespace LD
  
 
  
-        public FastBigDouble(string value, eFormat format)
+        public BigDouble(string value, eFormat format)
         {
             switch (format)
             {
                 case eFormat.Number:
-                    this = FastBigDouble.Parse(value);
+                    this = BigDouble.Parse(value);
                     break;
                 case eFormat.NumberWithAlphabet:
                     var (mantissa, exponent) = SplitAlphabetValue(value);
@@ -118,7 +118,7 @@ namespace LD
                     if (mantissa >= 1000d) 
                         throw new Exception("생성자로 알파벳 넘버를 받을 시 가수부는 1000을 초과할 수 없습니다.");
                     else 
-                        this = new FastBigDouble(mantissa, exponentIndex); 
+                        this = new BigDouble(mantissa, exponentIndex); 
                     break;
                 case eFormat.NumberWithExponent:
                     var split = FastDouble.GetBigValueInfo(value);
@@ -131,26 +131,26 @@ namespace LD
                     break;
             } 
         }
-        public FastBigDouble(string value)
+        public BigDouble(string value)
         { 
             if (HasAlphabet(value))
             {
-                this = new FastBigDouble(value, eFormat.NumberWithAlphabet);
+                this = new BigDouble(value, eFormat.NumberWithAlphabet);
             }
             else if (value.IndexOf('e') != -1)
             {
-                this = new FastBigDouble(value, eFormat.NumberWithExponent);
+                this = new BigDouble(value, eFormat.NumberWithExponent);
             }
             else
             {
-                this = FastBigDouble.Parse(value);
+                this = BigDouble.Parse(value);
             }
         }
         
-        public FastBigDouble(double value, string unit)
+        public BigDouble(double value, string unit)
         {
-            var exponent = FastBigDouble.GetExponentFromUnitName(unit);
-            this = new FastBigDouble(value, exponent);
+            var exponent = BigDouble.GetExponentFromUnitName(unit);
+            this = new BigDouble(value, exponent);
         } 
     }
 }
