@@ -1,5 +1,7 @@
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace LD
 { 
     public partial struct BigDouble : IFormattable, IComparable, IComparable<BigDouble>, IEquatable<BigDouble>
@@ -34,7 +36,7 @@ namespace LD
             return false;
         }
         public static (double numericPart, string alphaPart) SplitAlphabetValue(string input)
-        {
+        { 
             int MAX_ALPHABET = 8;
             Span<char> buffer = stackalloc char[MAX_ALPHABET]; 
             
@@ -44,10 +46,7 @@ namespace LD
             bool isNumeric = true;
             bool isDecimal = false;
             bool isNegative = false;
-            double decimalFactor = 1.0;
-            
-            
-
+            double decimalFactor = 1.0; 
             
             for (var index = 0; index < input.Length; index++)
             {
@@ -90,13 +89,13 @@ namespace LD
                 numericPart /= decimalFactor;
             }
 
+            
             if (!CachedAlphabet.ContainsKey(charToValue))
             {
                 CachedAlphabet[charToValue] = new string(buffer.Slice(0, charToValueCount)); 
             }
-
-            CachedAlphabet.TryGetValue(charToValue, out var value);
-            return (numericPart, value );
+ 
+            return (numericPart, CachedAlphabet[charToValue] );
         }
         
 
@@ -112,7 +111,13 @@ namespace LD
                     break;
                 case eFormat.NumberWithAlphabet:
                     var (mantissa, exponent) = SplitAlphabetValue(value);
+                  
                     var exponentIndex = GetExponentFromUnitName(exponent); 
+                    if (mantissa >= 10)
+                    {
+                        mantissa *= .1d;
+                        exponentIndex++;
+                    }
                     if (mantissa >= 1000d) 
                         throw new Exception("생성자로 알파벳 넘버를 받을 시 가수부는 1000을 초과할 수 없습니다.");
                     else 
@@ -144,11 +149,6 @@ namespace LD
                 this = BigDouble.Parse(value);
             }
         }
-        
-        public BigDouble(double value, string unit)
-        {
-            var exponent = BigDouble.GetExponentFromUnitName(unit);
-            this = new BigDouble(value, exponent);
-        } 
+         
     }
 }

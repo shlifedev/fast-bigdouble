@@ -7,9 +7,10 @@ using UnityEngine.Profiling;
 
 public class Profile : MonoBehaviour
 {
+    public string v;
     private void Update()
     {
-        Debug.Log(new BigDouble("1e100000").GetUnit());
+        Debug.Log(new BigDouble(v).GetUnit());
     }
 
     // Start is called before the first frame update
