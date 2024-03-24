@@ -2,6 +2,8 @@
  
 This source code is a fork of [BreakInfinity](https://github.com/Razenpok/BreakInfinity.cs) that has been modified for idle games that use very large numbers.
 
+- GC Friendly
+- Fast Double Parse 
 
 ## Why Fast?
 The functions see in the picture were called 1000 times in one frame
