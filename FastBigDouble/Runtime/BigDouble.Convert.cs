@@ -107,8 +107,7 @@ namespace LD
         }  
 
         public string ToString(string format, IFormatProvider formatProvider)
-        {
-            return null;
+        {`
         }
     }
 }

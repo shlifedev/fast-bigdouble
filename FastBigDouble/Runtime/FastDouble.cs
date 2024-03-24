@@ -5,7 +5,8 @@ namespace LD
     public static class FastDouble
     {
         public static BigValueInfo GetBigValueInfo(string input)
-        { 
+        {
+            
             double mantissa = 0;
             long exponent = 0;
             double decimalFactor = 1;
@@ -243,7 +244,8 @@ namespace LD
                 }
             }
 
-            return new string(buffer.Slice(0, index));
+
+            return buffer.Slice(0, index).ToString();
         }
 
 

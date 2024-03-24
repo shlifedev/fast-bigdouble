@@ -10,23 +10,16 @@ public class Profile : MonoBehaviour
     public string v;
     private void Update()
     {
-        Debug.Log(new BigDouble(v).GetUnit());
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-         
+    
         Profiler.BeginSample("ExponentCtor");
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 1000; i++)
         {
             new BigDouble("1e10000");
         }
 
         Profiler.EndSample();
         Profiler.BeginSample("AlphabetCtor");
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 1000; i++)
         {
             new BigDouble("10ZZZ");
         }
@@ -34,7 +27,7 @@ public class Profile : MonoBehaviour
         Profiler.EndSample();
         
         Profiler.BeginSample("SmallAlphabetCtor");
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 1000; i++)
         {
             new BigDouble("1ZZZ");
         } 
@@ -42,7 +35,7 @@ public class Profile : MonoBehaviour
         
         
         Profiler.BeginSample("NumberCtor");
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 1000; i++)
         {
             new BigDouble("100000000000000000000000000000000");
         }
@@ -50,13 +43,19 @@ public class Profile : MonoBehaviour
         Profiler.EndSample();
         var bd = new BigDouble("1e10000");
         Profiler.BeginSample("ToString");
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 1000; i++)
         {
             bd.ToString();
          
         }
-        Profiler.EndSample();
-        Application.Quit();
+        Profiler.EndSample(); 
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+      
 
     }
 }
