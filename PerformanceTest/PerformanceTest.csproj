@@ -16,6 +16,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FastBigDouble\FastBigDouble.csproj" />
+      <ProjectReference Include="..\SubModules\original\BreakInfinity\BreakInfinity.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="BenchmarkDotNet.Artifacts\" />
     </ItemGroup>
 
 </Project>
