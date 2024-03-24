@@ -1,16 +1,9 @@
 {
   "name": "com.shlifedev.bigdouble",
-  "version": "1.0.0",
-  "unity": "2022.2",
   "displayName": "BigDouble",
-  "description": "Big Number For IdleGame",
-  "keywords": [
-    "2d",
-    "animation"
-  ],
-  "category": "Utility",
-  "repository": {
-    "url": "https://github.com/shlifedev/FastBigDouble.git",
-    "type": "git"
-  }
+    "version": "1.0.0",
+    "unity": "2018.3",
+    "description": "BigNumber For IdleGame",
+    "license": "MIT",
+    "dependencies": {}
 }
