@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace LD
 { 
-    public partial struct FastBigDouble : IFormattable, IComparable, IComparable<FastBigDouble>, IEquatable<FastBigDouble>
+    public partial struct BigDouble : IFormattable, IComparable, IComparable<BigDouble>, IEquatable<BigDouble>
     {
         private static StringBuilder unitSb = new StringBuilder(); 
         private static StringBuilder alphaUnitSb = new StringBuilder(); 
